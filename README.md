@@ -1,4 +1,4 @@
-# WordPress Theme Starter
+# SCSS WordPress Theme Starter
 
 ## setup
 
@@ -13,6 +13,9 @@ gulp watch
 ```
 
 ## local WordPress
+
+Use docker compose for building local wp server.
+When you have to include some plug-ins, put plug-in files in `/wp-plug-ins`
 
 ```shell=
 docker-compose up -d
@@ -31,6 +34,8 @@ mysqldump -u admin -p pass -P 3306 -h 127.0.0.1 < dump.sql
 ```
 
 ## design
+
+styles for responsive coding adopted from <https://github.com/ajlkn/responsive-tools>
 
 - breakpoints
 
