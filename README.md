@@ -8,6 +8,8 @@ npm i
 
 ## dev
 
+tasks by [@takuto0515](https://github.com/takuto0515)
+
 ```shell=
 gulp watch
 ```
