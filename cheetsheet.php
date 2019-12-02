@@ -78,11 +78,11 @@ add_action('init', 'create_post_type');
 function create_post_type()
 {
   register_post_type(
-    'news', // 投稿タイプ名の定義
+    'news', // name of custom type
     array(
       'labels' => array(
-        'name' => __('新着情報'), // 表示する投稿タイプ名
-        'singular_name' => __('新着情報')
+        'name' => __('NEWS'),
+        'singular_name' => __('NEWS')
       ),
       'public' => true,
       'menu_position' => 5,
@@ -91,27 +91,41 @@ function create_post_type()
 }
 ?>
 
-<!-- カスタムタクソノミーの追加 -->
+<!-- Add Custom Taxonomy -->
 <?php
-// カスタムタクソノミーを作成
 function self_made_taxonomies()
 {
-  // 自作カテゴリーを作成
   register_taxonomy(
     'self_made_cat',
     array('self_made'),
     array(
-      'label'            => '自作したカテゴリー', //表示名
-      'show_ui'           => true, //管理画面に表示するか
-      'show_admin_column' => true, //管理画面の一覧に表示するか
-      'show_in_nav_menus' => true, //カスタムメニューの作成画面で表示するか
-      'hierarchical'      => true, //階層構造を持たせるか（持たせるとカテゴリー扱い）
+      'label'            => 'MY_ORIGINAL_TAXONOMY',
+      'show_ui'           => true,
+      'show_admin_column' => true,
+      'show_in_nav_menus' => true,
+      'hierarchical'      => true,
     )
   );
 }
 add_action('init', 'self_made_taxonomies', 0);
 ?>
 
+<!-- Get Custom Type Posts -->
+<ul>
+  <?php $args = array(
+    'numberposts' => 5,
+    'post_type' => 'POST_TYPE'
+  );
+  $customPosts = get_posts($args);
+  if($customPosts) : foreach($customPosts as $post) : setup_postdata( $post );
+  ?>
+  <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+  <?php endforeach; ?>
+  <?php else : //記事が無い場合 ?>
+  <p>Sorry, no posts matched your criteria.</p>
+  <?php endif;
+  wp_reset_postdata(); //クエリのリセット ?>
+</ul>
 
 <!-- 管理画面: 投稿一覧カテゴリソート -->
 <?php
