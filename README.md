@@ -2,7 +2,7 @@
 
 ## setup
 
-```shell=
+```shell
 npm i
 ```
 
@@ -10,7 +10,7 @@ npm i
 
 tasks by [@takuto0515](https://github.com/takuto0515)
 
-```shell=
+```shell
 gulp watch
 ```
 
@@ -19,19 +19,19 @@ gulp watch
 Use docker compose for building local wp server.
 When you have to include some plug-ins, put plug-in files in `/wp-plug-ins`
 
-```shell=
+```shell
 docker-compose up -d
 ```
 
 db > dump
 
-```shell=
+```shell
 mysqldump -u admin -p pass -P 3306 -h 127.0.0.1 -r dump.sql --single-transaction wordpress
 ```
 
 dump > db
 
-```shell=
+```shell
 mysqldump -u admin -p pass -P 3306 -h 127.0.0.1 < dump.sql
 ```
 
@@ -41,7 +41,7 @@ styles for responsive coding adopted from <https://github.com/ajlkn/responsive-t
 
 - breakpoints
 
-```sass=
+```scss
 @include breakpoints((
     xlarge:   ( 1281px,  1920px ),
     large:    ( 981px,   1280px ),
@@ -54,7 +54,7 @@ styles for responsive coding adopted from <https://github.com/ajlkn/responsive-t
 
 - how to include in scss
 
-```sass=
+```scss
 @include breakpoint('large') {
     hogehoge: hogehoge;
 }
